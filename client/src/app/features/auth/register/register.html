@@ -1,0 +1,27 @@
+<section id="register-page">
+    <h1>Register</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="username">Username:</label>
+        <input id="username" type="text" formControlName="username" required />
+
+        <label for="phone">Phone Number:</label>
+        <input id="phone" type="text" formControlName="phone" required />
+
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email" required />
+
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password" required />
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" required />
+
+        <button type="submit" [disabled]="form.invalid">Register</button>
+    </form>
+
+    <p>
+        Already have an account?
+        <a routerLink="/login">Login here</a>
+    </p>
+</section>
