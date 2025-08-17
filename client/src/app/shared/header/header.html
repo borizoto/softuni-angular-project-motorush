@@ -1,0 +1,23 @@
+<header>
+    <h1 class="headingLogo">
+        MotoRush
+    </h1>
+
+    <nav>
+        <a routerLink="/">Home</a>
+        <a routerLink="/search">Search</a>
+        <a routerLink="/listings">All Listings</a>
+
+        <!-- Visible for logged-in users -->
+        <div id="user">
+            <a routerLink="/listings/create">Create Listing</a>
+            <a routerLink="/logout">Logout</a>
+        </div>
+
+        <!-- Visible for guests -->
+        <div id="guest">
+            <a routerLink="/login">Login</a>
+            <a routerLink="/register">Register</a>
+        </div>
+    </nav>
+</header>
