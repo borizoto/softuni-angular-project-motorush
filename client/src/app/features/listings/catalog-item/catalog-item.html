@@ -4,5 +4,5 @@
     <h2>{{ listing.model }}</h2>
     <p>Price: €{{ listing.price }}</p>
     <p>Location: {{ listing.location }}</p>
-    <a [routerLink]="['/listings', listing._id]" class="details-button">Details</a>
+    <a [routerLink]="['/listings', listing._id, 'details']" class="details-button">Details</a>
 </div>

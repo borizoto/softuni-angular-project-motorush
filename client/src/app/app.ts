@@ -5,10 +5,11 @@ import { Header } from "./shared/header/header";
 import { Footer } from "./shared/footer/footer";
 import { Home } from "./features/home/home";
 import { Catalog } from "./features/listings/catalog/catalog";
+import { ListingDetails } from "./features/listings/listing-details/listing-details";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Create, Header, Footer, Home, Catalog],
+  imports: [RouterOutlet, Create, Header, Footer, Home, Catalog, ListingDetails],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
