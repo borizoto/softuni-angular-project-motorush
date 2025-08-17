@@ -41,6 +41,7 @@ export class Create implements OnInit {
 			cubicCapacity: ['', Validators.required],
 			hp: ['', Validators.required],
 			transmission: ['', Validators.required],
+			condition: ['', Validators.required],
 			location: ['', Validators.required],
 			price: ['', [Validators.required, Validators.min(1)]],
 			currency: ['', Validators.required],

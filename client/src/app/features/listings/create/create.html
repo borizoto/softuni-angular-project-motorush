@@ -69,6 +69,14 @@
                 <option value="pleven">Pleven</option>
             </select>
 
+            <!-- Condition -->
+            <label for="condition">Condition:</label>
+            <select id="condition" formControlName="condition" required>
+                <option value="" disabled hidden>Choose condition</option>
+                <option value="new">New</option>
+                <option value="used">Used</option>
+            </select>
+
             <!-- Price -->
             <label for="price">Price:</label>
             <input type="number" id="price" formControlName="price" min="1" required />

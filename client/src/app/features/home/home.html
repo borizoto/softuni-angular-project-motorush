@@ -16,15 +16,15 @@
 <section class="bike-listings">
     <h2>Latest Listings</h2>
 
-    @for (listing of listings; track listing.title) {
+    @for (listing of listings; track listing._id) {
     <article class="bike">
-        <img [src]="listing.img" [alt]="listing.title" />
+        <img [src]="listing.images[0]" [alt]="listing.make + ' ' + listing.model" />
         <h3>
             <a [routerLink]="['/listings', listing._id]">
-                {{ listing.title }}
+                {{ listing.make }} {{listing.model}}
             </a>
         </h3>
-        <p>Category: {{ listing.category }}</p>
+        <p>Condition: {{ listing.condition }}</p>
         <p>Price: ${{ listing.price }}</p>
     </article>
     }
