@@ -1,0 +1,31 @@
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Welcome to MotoRush</h1>
+    <p>
+        Discover, Buy &amp; Sell Motorbikes — The Ultimate Marketplace for Riders!
+        Find the perfect bike for your next adventure or list yours for sale today
+        and connect with buyers near you!
+    </p>
+    <div class="hero-buttons">
+        <a routerLink="/search" class="btn">Browse Listings</a>
+        <a routerLink="/listings/create" class="btn">Sell Your Bike</a>
+    </div>
+</section>
+
+<!-- Latest Listings Section -->
+<section class="bike-listings">
+    <h2>Latest Listings</h2>
+
+    @for (listing of listings; track listing.title) {
+    <article class="bike">
+        <img [src]="listing.img" [alt]="listing.title" />
+        <h3>
+            <a [routerLink]="['/listings', listing._id]">
+                {{ listing.title }}
+            </a>
+        </h3>
+        <p>Category: {{ listing.category }}</p>
+        <p>Price: ${{ listing.price }}</p>
+    </article>
+    }
+</section>
