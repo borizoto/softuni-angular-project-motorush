@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-	selector: 'app-create',
-	standalone: true,
+	selector: 'app-edit',
 	imports: [ReactiveFormsModule],
-	templateUrl: './create.html',
-	styleUrl: './create.css'
+	templateUrl: './edit.html',
+	styleUrl: './edit.css'
 })
-export class Create implements OnInit {
+export class Edit implements OnInit {
 	form!: FormGroup;
 
 	brandOptions = [
