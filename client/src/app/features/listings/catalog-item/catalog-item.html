@@ -1,0 +1,8 @@
+<div class="bike-info">
+    <img [src]="listing.images[0].url" [alt]="listing.images[0].alt" />
+    <h6>{{ listing.make }}</h6>
+    <h2>{{ listing.model }}</h2>
+    <p>Price: €{{ listing.price }}</p>
+    <p>Location: {{ listing.location }}</p>
+    <a [routerLink]="['/listings', listing._id]" class="details-button">Details</a>
+</div>

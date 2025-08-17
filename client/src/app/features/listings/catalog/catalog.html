@@ -1,0 +1,14 @@
+<!-- listings-catalog.component.html -->
+<section id="catalog-page">
+    <h1>All Motorbike Listings</h1>
+
+    @if (listings.length > 0) {
+    <div class="allBikes">
+        @for (curListing of listings; track curListing._id) {
+        <app-catalog-item [listing]="curListing"></app-catalog-item>
+        }
+    </div>
+    } @else {
+    <h3 class="no-articles">No motorbike listings available</h3>
+    }
+</section>
