@@ -1,47 +1,39 @@
 <section id="bike-details">
     <h1>Motorbike Listing Details</h1>
 
+    @if ($listing | async; as listing) {
     <div class="info-section">
         <div class="bike-header">
-            <img class="bike-img" src="assets/moto1.jpg" alt="Honda CBR500R" />
-            <h1>Honda CBR500R</h1>
-            <span class="year">Model Year: 2007</span>
-            <p class="category">Category: Sport Bike</p>
-            <p class="frame-material">Engine: 500cc</p>
-            <p class="price">Price: 7500 BGN</p>
-            <p class="location">Location: Sofia</p>
+            <img class="bike-img" [src]="listing.imageUrl1" alt="{{ listing.make }} {{ listing.model }}" />
+            <h1>{{ listing.make }} {{ listing.model }}</h1>
+            <span class="year">Model Year: {{ listing.year }}</span>
+            <p class="category">Category: {{ listing.condition }}</p>
+            <p class="frame-material">Engine: {{ listing.cubicCapacity }}cc</p>
+            <p class="price">Price: {{ listing.price }} {{ listing.currency }}</p>
+            <p class="location">Location: {{ listing.location }}</p>
         </div>
 
         <p class="information">
-            A reliable Honda CBR500R in excellent condition. Great for both commuting and weekend rides.
-            Smooth handling, powerful enough for highways but still beginner-friendly.
+            {{ listing.information }}
         </p>
 
         <div class="bike-images">
             <h2>Gallery:</h2>
-            <img src="assets/moto1.jpg" alt="Honda CBR500R Front" />
-            <img src="assets/moto2.jpg" alt="Honda CBR500R Side" />
-            <img src="assets/moto3.jpg" alt="Honda CBR500R Rear" />
+            <img [src]="listing.imageUrl1" alt="{{ listing.make }} {{ listing.model }}" />
+            <img [src]="listing.imageUrl2" alt="{{ listing.make }} {{ listing.model }}" />
+            <img [src]="listing.imageUrl3" alt="{{ listing.make }} {{ listing.model }}" />
         </div>
 
         <!-- Comments Section -->
         <div class="details-comments">
             <h2>Comments:</h2>
-            <ul>
-                <li class="comment">
-                    <p>Content: This bike is amazing! Perfect for weekend rides.</p>
-                </li>
-                <li class="comment">
-                    <p>Content: Smooth engine, great value for the price.</p>
-                </li>
-            </ul>
             <p class="no-comment">No comments yet.</p>
         </div>
 
         <!-- Edit/Delete buttons -->
         <div class="buttons">
-            <a routerLink="/listings/1/edit" class="button">Edit Listing</a>
-            <a routerLink="/listings/1/delete" class="button">Delete Listing</a>
+            <a [routerLink]="['/listings', listing._id, 'edit']" class="button">Edit Listing</a>
+            <a [routerLink]="['/listings', listing._id, 'delete']" class="button">Delete Listing</a>
         </div>
     </div>
 
@@ -53,4 +45,5 @@
             <input class="btn submit" type="submit" value="Add Comment" />
         </form>
     </article>
+    }
 </section>

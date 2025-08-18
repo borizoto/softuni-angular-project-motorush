@@ -15,4 +15,8 @@ export class ListingService {
     getAll(): Observable<Motorbike[]> {
         return this.httpClient.get<Motorbike[]>(`${this.baseUrl}/listings`);
     }
+
+    getOne(listingId: string): Observable<Motorbike> {
+        return this.httpClient.get<Motorbike>(`${this.baseUrl}/listings/${listingId}`);
+    }
 }
