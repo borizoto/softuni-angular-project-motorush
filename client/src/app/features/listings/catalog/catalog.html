@@ -1,7 +1,7 @@
-<!-- listings-catalog.component.html -->
 <section id="catalog-page">
     <h1>All Motorbike Listings</h1>
 
+    @if (listings$ | async; as listings) {
     @if (listings.length > 0) {
     <div class="allBikes">
         @for (curListing of listings; track curListing._id) {
@@ -9,6 +9,7 @@
         }
     </div>
     } @else {
-    <h3 class="no-articles">No motorbike listings available</h3>
+    <h3 class="no-articles">No motorbike listings available.</h3>
+    }
     }
 </section>

@@ -18,7 +18,7 @@
 
     @for (listing of listings; track listing._id) {
     <article class="bike">
-        <img [src]="listing.images[0]" [alt]="listing.make + ' ' + listing.model" />
+        <img [src]="listing.imageUrl1" [alt]="listing.make + ' ' + listing.model" />
         <h3>
             <a [routerLink]="['/listings', listing._id, 'details']">
                 {{ listing.make }} {{listing.model}}

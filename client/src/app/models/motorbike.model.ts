@@ -21,11 +21,6 @@ export enum Currency {
     USD = 'usd',
 }
 
-export interface ImageSet {
-    url: string;
-    alt?: string;
-}
-
 export enum Location {
     Sofia = 'Sofia',
     Varna = 'Varna',
@@ -47,8 +42,11 @@ export interface Motorbike {
     location: Location;
     price: number;
     currency: Currency;
-    images: ImageSet[];
+    imageUrl1: string;
+    imageUrl2: string;
+    imageUrl3: string;
     information?: string;
 
-    ownerId?: Id;
+    _ownerId?: Id;
+    _createdOn?: number
 }
