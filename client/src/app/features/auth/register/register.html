@@ -2,20 +2,52 @@
     <h1>Register</h1>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <!-- Username -->
         <label for="username">Username:</label>
-        <input id="username" type="text" formControlName="username" required />
+        <input id="username" type="text" formControlName="username" />
+        @if (form.get('username')?.touched && form.get('username')?.hasError('required')) {
+        <p class="error">Username is required.</p>
+        }
 
+        <!-- Phone -->
         <label for="phone">Phone Number:</label>
-        <input id="phone" type="text" formControlName="phone" required />
+        <input id="phone" type="text" formControlName="phone" />
+        @if (form.get('phone')?.touched && form.get('phone')?.hasError('required')) {
+        <p class="error">Phone number is required.</p>
+        }
+        @if (form.get('phone')?.touched && form.get('phone')?.hasError('pattern')) {
+        <p class="error">Phone number must be 10-15 digits.</p>
+        }
 
+        <!-- Email -->
         <label for="email">Email:</label>
-        <input id="email" type="email" formControlName="email" required />
+        <input id="email" type="email" formControlName="email" />
+        @if (form.get('email')?.touched && form.get('email')?.hasError('required')) {
+        <p class="error">Email is required.</p>
+        }
+        @if (form.get('email')?.touched && form.get('email')?.hasError('email')) {
+        <p class="error">Invalid email format.</p>
+        }
 
+        <!-- Password -->
         <label for="password">Password:</label>
-        <input id="password" type="password" formControlName="password" required />
+        <input id="password" type="password" formControlName="password" />
+        @if (form.get('password')?.touched && form.get('password')?.hasError('required')) {
+        <p class="error">Password is required.</p>
+        }
+        @if (form.get('password')?.touched && form.get('password')?.hasError('minlength')) {
+        <p class="error">Password must be at least 6 characters long.</p>
+        }
 
+        <!-- Confirm Password -->
         <label for="confirmPassword">Confirm Password:</label>
-        <input id="confirmPassword" type="password" formControlName="confirmPassword" required />
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+        @if (form.get('confirmPassword')?.touched && form.get('confirmPassword')?.hasError('required')) {
+        <p class="error">Confirm Password is required.</p>
+        }
+        @if (form.hasError('passwordMismatch') && form.get('confirmPassword')?.touched) {
+        <p class="error">Passwords do not match.</p>
+        }
 
         <button type="submit" [disabled]="form.invalid">Register</button>
     </form>
