@@ -1,0 +1,96 @@
+<section id="search-page">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="container">
+            <h1>Search Motorbike Listings</h1>
+
+            <!-- Brand select -->
+            <label for="make">Motorbike Brand:</label>
+            <select id="make" formControlName="make">
+                <option value="" disabled hidden>Choose a brand</option>
+                @for (brand of brandOptions; track brand) {
+                <option [value]="brand">{{ brand }}</option>
+                }
+            </select>
+
+            <!-- Model select -->
+            <label for="model">Motorbike Model:</label>
+            <select id="model" formControlName="model" [disabled]="!form.get('make')?.value">
+                <option value="" disabled hidden>Choose a model</option>
+                @for (model of modelOptions[form.get('make')?.value] || []; track model) {
+                <option [value]="model">{{ model }}</option>
+                }
+            </select>
+
+            <!-- Year -->
+            <label for="year">Model year:</label>
+            <input type="number" id="year" formControlName="year" min="1900" max="2025" />
+
+            <!-- Color -->
+            <label for="color">Color:</label>
+            <input type="text" id="color" formControlName="color" />
+
+            <!-- Fuel -->
+            <label for="fuel">Fuel:</label>
+            <select id="fuel" formControlName="fuel">
+                <option value="" disabled hidden>Choose fuel type</option>
+                <option value="petrol">Petrol</option>
+                <option value="electric">Electric</option>
+            </select>
+
+            <!-- Mileage -->
+            <label for="mileage">Mileage (km):</label>
+            <input type="number" id="mileage" formControlName="mileage" min="0" />
+
+            <!-- Cubic Capacity -->
+            <label for="cubicCapacity">Cubic Capacity (cc):</label>
+            <input type="number" id="cubicCapacity" formControlName="cubicCapacity" min="50" />
+
+            <!-- Horsepower -->
+            <label for="hp">Horsepower (HP):</label>
+            <input type="number" id="hp" formControlName="hp" min="1" />
+
+            <!-- Transmission -->
+            <label for="transmission">Transmission:</label>
+            <select id="transmission" formControlName="transmission">
+                <option value="" disabled hidden>Choose transmission</option>
+                <option value="manual">Manual</option>
+                <option value="automatic">Automatic</option>
+            </select>
+
+            <!-- Location -->
+            <label for="location">Located in:</label>
+            <select id="location" formControlName="location">
+                <option value="" disabled hidden>Choose a city</option>
+                <option value="sofia">Sofia</option>
+                <option value="plovdiv">Plovdiv</option>
+                <option value="varna">Varna</option>
+                <option value="burgas">Burgas</option>
+                <option value="pleven">Pleven</option>
+            </select>
+
+            <!-- Condition -->
+            <label for="condition">Condition:</label>
+            <select id="condition" formControlName="condition">
+                <option value="" disabled hidden>Choose condition</option>
+                <option value="new">New</option>
+                <option value="used">Used</option>
+            </select>
+
+            <!-- Price -->
+            <label for="price">Price:</label>
+            <input type="number" id="price" formControlName="price" min="1" />
+
+            <!-- Currency -->
+            <label for="currency">Currency:</label>
+            <select id="currency" formControlName="currency">
+                <option value="" disabled hidden>Choose currency</option>
+                <option value="bgn">лв.</option>
+                <option value="eur">EUR</option>
+                <option value="usd">USD</option>
+            </select>
+
+            <!-- Submit -->
+            <input class="btn submit" type="submit" value="Search" />
+        </div>
+    </form>
+</section>

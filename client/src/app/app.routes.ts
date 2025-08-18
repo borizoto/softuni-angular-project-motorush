@@ -7,4 +7,5 @@ export const routes: Routes = [
     { path: 'register', loadComponent: () => import('../app/features/auth/register/register').then(comp => comp.Register) },
     { path: 'listings', loadComponent: () => import('../app/features/listings/catalog/catalog').then(comp => comp.Catalog) },
     { path: 'listings/create', loadComponent: () => import('../app/features/listings/create/create').then(comp => comp.Create) },
+    { path: 'search', loadComponent: () => import('../app/features/listings/search/search').then(comp => comp.Search) }
 ];
