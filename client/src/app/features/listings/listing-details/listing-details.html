@@ -31,10 +31,13 @@
         </div>
 
         <!-- Edit/Delete buttons -->
+        @if (isOwner) {
         <div class="buttons">
             <a [routerLink]="['/listings', listing._id, 'edit']" class="button">Edit Listing</a>
             <a [routerLink]="['/listings', listing._id, 'delete']" class="button">Delete Listing</a>
         </div>
+        }
+
     </div>
 
     <!-- Add Comment -->
