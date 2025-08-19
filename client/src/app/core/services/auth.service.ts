@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable, signal } from "@angular/core";
 import { environment } from "../../../environments/environment";
 import { User } from "../../models/user.model";
@@ -53,5 +53,36 @@ export class AuthService {
                 localStorage.setItem('currentUser', JSON.stringify(user));
             })
         );
+    }
+
+    get accessToken(): string | null {
+        return this._currentUser()?.accessToken ?? null;
+    }
+
+    logout() {
+        if (!this.accessToken) {
+            return;
+        }
+
+        const headers = new HttpHeaders({
+            'X-Authorization': this.accessToken,
+        });
+
+        this.httpClient.get(`${this.authUrl}/logout`, { headers, observe: 'response' }).subscribe({
+            next: (res) => {
+                if (res.status === 204) {
+                    console.log('Successfully logged out.');
+                }
+                this._currentUser.set(null);
+                this._isLoggedIn.set(false);
+                localStorage.removeItem('currentUser');
+            },
+            error: (err) => {
+                console.error('Logout failed:', err);
+                this._currentUser.set(null);
+                this._isLoggedIn.set(false);
+                localStorage.removeItem('currentUser');
+            },
+        });
     }
 }
