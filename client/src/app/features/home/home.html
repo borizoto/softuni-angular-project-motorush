@@ -16,16 +16,20 @@
 <section class="bike-listings">
     <h2>Latest Listings</h2>
 
-    @for (listing of listings; track listing._id) {
+    @if (listings$ | async; as listings) {
+    @if (listings.length > 0) {
+    @for (curListing of listings; track curListing._id) {
     <article class="bike">
-        <img [src]="listing.imageUrl1" [alt]="listing.make + ' ' + listing.model" />
+        <img [src]="curListing.imageUrl1" [alt]="curListing.make + ' ' + curListing.model" />
         <h3>
-            <a [routerLink]="['/listings', listing._id, 'details']">
-                {{ listing.make }} {{listing.model}}
+            <a [routerLink]="['/listings', curListing._id, 'details']">
+                {{ curListing.make }} {{curListing.model}}
             </a>
         </h3>
-        <p>Condition: {{ listing.condition }}</p>
-        <p>Price: {{ listing.price }} {{listing.currency}}</p>
+        <p>Condition: {{ curListing.condition }}</p>
+        <p>Price: {{ curListing.price }} {{curListing.currency}}</p>
     </article>
+    }
+    }
     }
 </section>
