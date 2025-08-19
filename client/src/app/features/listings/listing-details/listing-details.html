@@ -7,8 +7,9 @@
             <img class="bike-img" [src]="listing.imageUrl1" alt="{{ listing.make }} {{ listing.model }}" />
             <h1>{{ listing.make }} {{ listing.model }}</h1>
             <span class="year">Model Year: {{ listing.year }}</span>
-            <p class="Condition">Condition: {{ listing.condition }}</p>
-            <p class="frame-material">Engine: {{ listing.cubicCapacity }}cc</p>
+            <p class="condition">Condition: {{ listing.condition }}</p>
+            <p class="engine">Engine: {{ listing.cubicCapacity }} cc</p>
+            <p class="horsepower">Horsepower: {{ listing.hp }} hp</p>
             <p class="price">Price: {{ listing.price }} {{ listing.currency }}</p>
             <p class="location">Location: {{ listing.location }}</p>
         </div>
@@ -41,6 +42,7 @@
 
     </div>
 
+    @if (!isOwner && currentUser?._id) {
     <!-- Add Comment -->
     <article class="create-comment">
         <label>Add new comment:</label>
@@ -49,5 +51,7 @@
             <input class="btn submit" type="submit" value="Add Comment" />
         </form>
     </article>
+    }
+
     }
 </section>

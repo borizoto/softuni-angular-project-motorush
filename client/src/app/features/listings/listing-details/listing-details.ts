@@ -5,6 +5,7 @@ import { Motorbike } from '../../../models';
 import { ListingService } from '../../../core/services/listings.service';
 import { AsyncPipe } from '@angular/common';
 import { AuthService } from '../../../core/services/auth.service';
+import { User } from '../../../models/user.model';
 
 @Component({
 	selector: 'app-listing-details',
@@ -17,6 +18,7 @@ export class ListingDetails implements OnInit {
 	listingId!: string;
 	listing!: Motorbike;
 	isOwner = false;
+	currentUser: User | null = null;
 
 	constructor(
 		private listingsService: ListingService,
@@ -32,8 +34,8 @@ export class ListingDetails implements OnInit {
 
 		this.$listing.subscribe(listing => {
 			this.listing = listing;
-			const currentUser = this.authService.currentUser();
-			this.isOwner = currentUser?._id === listing._ownerId;
+			this.currentUser = this.authService.currentUser();
+			this.isOwner = this.currentUser?._id === listing._ownerId;
 		});
 	}
 

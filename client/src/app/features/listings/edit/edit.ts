@@ -77,7 +77,15 @@ export class Edit implements OnInit {
 
 	onSubmit(): void {
 		if (this.form.valid) {
-			console.log('Created offer:', this.form.value);
+			this.listingsService.edit(this.form.value, this.listingId).subscribe({
+				next: (bike) => {
+					console.log('Created listing:', bike);
+					this.router.navigate(['/listings']);
+				},
+				error: (err) => {
+					console.error('Failed to create listing:', err);
+				}
+			});
 		}
 	}
 }

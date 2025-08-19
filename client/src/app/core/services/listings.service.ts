@@ -40,6 +40,25 @@ export class ListingService {
         );
     }
 
+    edit(bikeData: Partial<Motorbike>, listingId: string): Observable<Motorbike> {
+        const accessToken = this.authService.currentUser()?.accessToken;
+
+        if (!accessToken) {
+            return throwError(() => new Error('Unauthorized!'));
+        }
+
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'X-Authorization': accessToken
+        });
+
+        return this.httpClient.put<Motorbike>(
+            `${this.baseUrl}/listings/${listingId}`,
+            bikeData,
+            { headers }
+        );
+    }
+
     delete(listingId: string): Observable<void> {
         const accessToken = this.authService.currentUser()?.accessToken;
 
