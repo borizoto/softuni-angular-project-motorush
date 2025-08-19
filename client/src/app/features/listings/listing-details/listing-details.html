@@ -39,7 +39,9 @@
                 Listing</a>
         </div>
         }
-
+        <span class="watching">
+            In {{watchlistedCount()}} people's watchlists.
+        </span>
     </div>
 
     @if (!isOwner && currentUser?._id) {
@@ -50,6 +52,22 @@
             <textarea name="comment" placeholder="Leave a comment..."></textarea>
             <input class="btn submit" type="submit" value="Add Comment" />
         </form>
+    </article>
+
+    <article class="watchlist">
+        @if (!hasAddedToWatchlist()) {
+        <div className="watchlist">
+            <button className="button" (click)="onAddToWatchlist()">
+                Add to Watchlist
+            </button>
+        </div>
+        } @else {
+        <div className="watchlist">
+            <button className="button" disabled>
+                Already Added to Watchlist!
+            </button>
+        </div>
+        }
     </article>
     }
 

@@ -12,6 +12,7 @@ export const routes: Routes = [
     { path: 'listings/:listingId/details', loadComponent: () => import('../app/features/listings/listing-details/listing-details').then(comp => comp.ListingDetails) },
     { path: 'listings/:listingId/edit', loadComponent: () => import('../app/features/listings/edit/edit').then(comp => comp.Edit), canActivate: [authGuard] },
     { path: 'listings/create', loadComponent: () => import('../app/features/listings/create/create').then(comp => comp.Create), canActivate: [authGuard] },
+    { path: 'profile', loadComponent: () => import('../app/features/profle/profile/profile').then(comp => comp.Profile), canActivate: [authGuard] },
     { path: 'search', loadComponent: () => import('../app/features/listings/search/search').then(comp => comp.Search) },
     { path: '**', component: NotFound }
 ];

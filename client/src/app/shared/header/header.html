@@ -8,11 +8,12 @@
         <!-- Visible for logged-in users -->
         <div id="user">
             <a routerLink="/listings/create">Create Listing</a>
+            <a routerLink="/profile">Profile</a>
             <a routerLink="/logout" (click)="onLogout()">Logout</a>
         </div>
         } @else {
         <!-- Visible for guests -->
-        <div id="guest">
+        <div id=" guest">
             <a routerLink="/login">Login</a>
             <a routerLink="/register">Register</a>
         </div>

@@ -1,0 +1,42 @@
+<section class="profile-hero">
+    <div class="container">
+        <h2>User Profile</h2>
+        <p class="profile-welcome">
+            Welcome back, <span id="username">{{ currentUser?.username }}</span>
+        </p>
+    </div>
+</section>
+
+<section class="created-listings">
+    <div class="container">
+        <h3>Created Bikes</h3>
+        <div class="bike-list">
+            @if (ownListings$ | async; as ownListings) {
+            @if (ownListings.length > 0) {
+            @for (bike of ownListings; track bike._id) {
+            <app-profile-listing-item [bike]="bike"></app-profile-listing-item>
+            }
+            } @else {
+            <p class="no-post">You haven't created a bike listing yet.</p>
+            }
+            }
+        </div>
+    </div>
+</section>
+
+<section class="watchlisted-bikes">
+    <div class="container">
+        <h3>Watchlisted Bikes</h3>
+        <div class="bike-list">
+            @if (watchlistedBikes$ | async; as watchlistedBikes) {
+            @if (watchlistedBikes.length > 0) {
+            @for (bike of watchlistedBikes; track bike._id) {
+            <app-profile-listing-item [bike]="bike"></app-profile-listing-item>
+            }
+            } @else {
+            <p class="no-post">You don't have any bike listings in your watchlist yet.</p>
+            }
+            }
+        </div>
+    </div>
+</section>

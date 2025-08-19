@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Motorbike } from "../../models";
 import { environment } from "../../../environments/environment";
 import { AuthService } from "./auth.service";
+import { WatchlistEntry } from "../../models/watchlistEntry.model";
 
 @Injectable({
     providedIn: 'root'
@@ -71,5 +72,10 @@ export class ListingService {
         });
 
         return this.httpClient.delete<void>(`${this.baseUrl}/listings/${listingId}`, { headers });
+    }
+
+    getByOwner(userId: string): Observable<WatchlistEntry[]> {
+        const params = new HttpParams().set('where', `_ownerId="${userId}"`);
+        return this.httpClient.get<WatchlistEntry[]>(`${this.baseUrl}/listings`, { params });
     }
 }
