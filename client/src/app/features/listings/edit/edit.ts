@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../../core/services/auth.service';
+import { ListingService } from '../../../core/services/listings.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Motorbike } from '../../../models';
 
 @Component({
 	selector: 'app-edit',
@@ -9,6 +13,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 })
 export class Edit implements OnInit {
 	form!: FormGroup;
+	listingId!: string;
+	isOwner = false;
+	listing!: Motorbike;
 
 	brandOptions = [
 		'Honda',
@@ -26,7 +33,9 @@ export class Edit implements OnInit {
 		BMW: ['R12', 'S1000RR'],
 	};
 
-	constructor(private fb: FormBuilder) { }
+	constructor(private fb: FormBuilder, private authService: AuthService, private listingsService: ListingService, private route: ActivatedRoute, private router: Router) {
+		this.listingId = this.route.snapshot.paramMap.get('listingId')!;
+	}
 
 	ngOnInit(): void {
 		this.form = this.fb.group({
@@ -51,6 +60,18 @@ export class Edit implements OnInit {
 
 		this.form.get('make')?.valueChanges.subscribe(() => {
 			this.form.get('model')?.reset('');
+		});
+
+		this.listingsService.getOne(this.listingId).subscribe(listing => {
+			this.listing = listing;
+			const currentUser = this.authService.currentUser();
+
+			if (currentUser?._id !== listing._ownerId) {
+				this.router.navigate(['/listings']);
+				return;
+			}
+
+			this.form.patchValue(listing);
 		});
 	}
 
