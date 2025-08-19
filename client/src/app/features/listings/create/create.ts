@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ListingService } from '../../../core/services/listings.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-create',
@@ -27,7 +29,7 @@ export class Create implements OnInit {
 		BMW: ['R12', 'S1000RR'],
 	};
 
-	constructor(private fb: FormBuilder) { }
+	constructor(private fb: FormBuilder, private listingsService: ListingService, private router: Router) { }
 
 	ngOnInit(): void {
 		this.form = this.fb.group({
@@ -57,7 +59,15 @@ export class Create implements OnInit {
 
 	onSubmit(): void {
 		if (this.form.valid) {
-			console.log('Created offer:', this.form.value);
+			this.listingsService.create(this.form.value).subscribe({
+				next: (bike) => {
+					console.log('Created listing:', bike);
+					this.router.navigate(['/listings']);
+				},
+				error: (err) => {
+					console.error('Failed to create listing:', err);
+				}
+			});
 		}
 	}
 }

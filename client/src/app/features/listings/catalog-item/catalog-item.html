@@ -2,7 +2,7 @@
     <img [src]="listing.imageUrl1" [alt]="listing.model" />
     <h6>{{ listing.make }}</h6>
     <h2>{{ listing.model }}</h2>
-    <p>Price: €{{ listing.price }}</p>
+    <p>Price: {{ listing.price }} {{listing.currency}}</p>
     <p>Location: {{ listing.location }}</p>
     <a [routerLink]="['/listings', listing._id, 'details']" class="details-button">Details</a>
 </div>
