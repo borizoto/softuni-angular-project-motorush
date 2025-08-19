@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Motorbike } from "../../models";
 import { environment } from "../../../environments/environment";
@@ -25,7 +25,7 @@ export class ListingService {
         const accessToken = this.authService.currentUser()?.accessToken;
 
         if (!accessToken) {
-            throw new Error('Unauthorized!');
+            return throwError(() => new Error('Unauthorized!'));
         }
 
         const headers = new HttpHeaders({
@@ -38,5 +38,19 @@ export class ListingService {
             bikeData,
             { headers }
         );
+    }
+
+    delete(listingId: string): Observable<void> {
+        const accessToken = this.authService.currentUser()?.accessToken;
+
+        if (!accessToken) {
+            return throwError(() => new Error('Unauthorized!'));
+        }
+
+        const headers = new HttpHeaders({
+            'X-Authorization': accessToken
+        });
+
+        return this.httpClient.delete<void>(`${this.baseUrl}/listings/${listingId}`, { headers });
     }
 }
