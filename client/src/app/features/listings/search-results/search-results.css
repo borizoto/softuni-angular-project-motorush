@@ -1,0 +1,90 @@
+/* ---------- Search Results Page ---------- */
+#search-results {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    display: flex;
+    flex-direction: column;
+    /* stack heading + grid */
+    gap: 30px;
+}
+
+#search-results h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #2C3E50;
+    margin: 0;
+}
+
+/* Wrapper for the result cards */
+.search-results-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* ---------- Individual Result Card ---------- */
+.bike-item {
+    width: 280px;
+    background-color: #ECF0F1;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #D5DBDB;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.bike-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-color: #2980B9;
+}
+
+.bike-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.bike-item p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #34495E;
+}
+
+/* Details Button */
+.details-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #2980B9;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: auto;
+}
+
+.details-btn:hover {
+    background-color: #1ABC9C;
+    transform: scale(1.05);
+}
+
+/* No results */
+#search-results .no-articles {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7F8C8D;
+    margin-top: 20px;
+    width: 100%;
+}

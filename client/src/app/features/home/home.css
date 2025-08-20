@@ -1,3 +1,4 @@
+/* ---------- Hero Section ---------- */
 .hero {
     background-color: #2980B9;
     color: white;
@@ -39,28 +40,34 @@
     background-color: #34495E;
 }
 
-.bike-listings {
-    padding: 40px 20px;
+/* ---------- Bike Listings ---------- */
+.bike-listings h2 {
     text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #2C3E50;
 }
 
-.bike-listings h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
+.bike-listings-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .bike {
-    display: inline-block;
-    width: 100%;
-    max-width: 280px;
-    margin: 0 20px 40px;
-    padding: 15px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #ECF0F1;
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     text-align: left;
     cursor: pointer;
+    height: 450px;
 }
 
 .bike:hover {
@@ -68,21 +75,30 @@
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.bike .image-wrap {
-    height: 180px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
 .bike img {
     width: 100%;
-    height: 100%;
+    height: 180px;
     object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 .bike h3 {
     font-size: 1.4rem;
     margin-bottom: 10px;
+}
+
+.bike h3 a {
+    color: #2980B9;
+    /* primary blue */
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.bike h3 a:hover {
+    color: #1ABC9C;
+    /* teal accent */
+    text-decoration: underline;
 }
 
 .bike p {
@@ -94,4 +110,99 @@
     font-size: 1.2rem;
     color: #7F8C8D;
     margin-top: 20px;
+}
+
+/* ---------- Create & Search Forms ---------- */
+#create-page,
+#search-page {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ECF0F1;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2C3E50;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #34495E;
+}
+
+input[type="number"],
+input[type="text"],
+select,
+textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #BDC3C7;
+    border-radius: 4px;
+    background-color: #FFF;
+    transition: all 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #2980B9;
+    outline: none;
+}
+
+button,
+input[type="submit"] {
+    padding: 12px;
+    background-color: #27AE60;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button:disabled,
+input[type="submit"]:disabled {
+    background-color: #BDC3C7;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled),
+input[type="submit"]:hover:not(:disabled) {
+    background-color: #2ECC71;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.container .btn.submit {
+    width: auto;
+    margin: 0 auto;
 }

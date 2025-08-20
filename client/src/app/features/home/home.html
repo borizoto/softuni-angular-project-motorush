@@ -15,21 +15,25 @@
 <!-- Latest Listings Section -->
 <section class="bike-listings">
     <h2>Latest Listings</h2>
-
-    @if (latestListings$ | async; as latestListings) {
-    @if (latestListings.length > 0) {
-    @for (curListing of latestListings; track curListing._id) {
-    <article class="bike">
-        <img [src]="curListing.imageUrl1" [alt]="curListing.make + ' ' + curListing.model" />
-        <h3>
-            <a [routerLink]="['/listings', curListing._id, 'details']">
-                {{ curListing.make }} {{curListing.model}}
-            </a>
-        </h3>
-        <p>Condition: {{ curListing.condition }}</p>
-        <p>Price: {{ curListing.price }} {{curListing.currency}}</p>
-    </article>
-    }
-    }
-    }
+    <div class="bike-listings-wrapper">
+        @if (latestListings$ | async; as latestListings) {
+        @if (latestListings.length > 0) {
+        @for (curListing of latestListings; track curListing._id) {
+        <article class="bike">
+            <img [src]="curListing.imageUrl1" [alt]="curListing.make + ' ' + curListing.model" />
+            <h3>
+                <a [routerLink]="['/listings', curListing._id, 'details']">
+                    {{ curListing.make }} {{curListing.model }}
+                </a>
+            </h3>
+            <p>Condition: {{ curListing.condition }}</p>
+            <p>Price: {{ curListing.price }} {{curListing.currency}}</p>
+        </article>
+        }
+        }
+        @else {
+        <h3 class="no-articles">No motorbike listings available.</h3>
+        }
+        }
+    </div>
 </section>

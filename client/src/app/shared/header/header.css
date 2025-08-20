@@ -6,10 +6,8 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #2C3E50;
-
     box-sizing: border-box;
 }
-
 
 .headingLogo {
     font-size: 2rem;
@@ -40,6 +38,13 @@ nav a:hover {
 #guest {
     display: flex;
     gap: 20px;
+    align-items: center;
+}
+
+#guest a {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #user a,
@@ -55,7 +60,6 @@ nav a:hover {
 #guest a:hover {
     color: #3498DB;
 }
-
 
 * {
     box-sizing: border-box;
