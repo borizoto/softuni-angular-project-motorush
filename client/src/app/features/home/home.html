@@ -16,9 +16,9 @@
 <section class="bike-listings">
     <h2>Latest Listings</h2>
 
-    @if (listings$ | async; as listings) {
-    @if (listings.length > 0) {
-    @for (curListing of listings; track curListing._id) {
+    @if (latestListings$ | async; as latestListings) {
+    @if (latestListings.length > 0) {
+    @for (curListing of latestListings; track curListing._id) {
     <article class="bike">
         <img [src]="curListing.imageUrl1" [alt]="curListing.make + ' ' + curListing.model" />
         <h3>

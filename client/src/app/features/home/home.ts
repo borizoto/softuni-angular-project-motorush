@@ -12,10 +12,11 @@ import { AsyncPipe } from '@angular/common';
 	styleUrl: './home.css'
 })
 export class Home {
-	listings$!: Observable<Motorbike[]>;
+	// listings$!: Observable<Motorbike[]>;
+	latestListings$!: Observable<Motorbike[]>;
 
 	constructor(private listingsService: ListingService) {
-		this.listings$ = this.listingsService.getAll();
-		// this.listings$ = of([]);
+		this.latestListings$ = this.listingsService.getLatestListings();
+		// this.latestListings$ = of([]);
 	}
 }

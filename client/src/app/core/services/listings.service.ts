@@ -78,4 +78,15 @@ export class ListingService {
         const params = new HttpParams().set('where', `_ownerId="${userId}"`);
         return this.httpClient.get<WatchlistEntry[]>(`${this.baseUrl}/listings`, { params });
     }
+
+    getLatestListings(): Observable<Motorbike[]> {
+        const searchParams = new URLSearchParams({
+            sortBy: '_createdOn desc',
+            pageSize: '5'
+        });
+
+        return this.httpClient.get<Motorbike[]>(
+            `${this.baseUrl}/listings?${searchParams.toString()}`
+        );
+    }
 }
