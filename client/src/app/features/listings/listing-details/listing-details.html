@@ -26,10 +26,7 @@
         </div>
 
         <!-- Comments Section -->
-        <div class="details-comments">
-            <h2>Comments:</h2>
-            <p class="no-comment">No comments yet.</p>
-        </div>
+        <app-comment-section></app-comment-section>
 
         <!-- Edit/Delete buttons -->
         @if (isOwner) {
@@ -46,13 +43,7 @@
 
     @if (!isOwner && currentUser?._id) {
     <!-- Add Comment -->
-    <article class="create-comment">
-        <label>Add new comment:</label>
-        <form class="form">
-            <textarea name="comment" placeholder="Leave a comment..."></textarea>
-            <input class="btn submit" type="submit" value="Add Comment" />
-        </form>
-    </article>
+    <app-comment-create></app-comment-create>
 
     <article class="watchlist">
         @if (!hasAddedToWatchlist()) {

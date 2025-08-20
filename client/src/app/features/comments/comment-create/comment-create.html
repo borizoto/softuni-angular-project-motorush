@@ -1,0 +1,10 @@
+<article class="create-comment">
+    <label for="comment">Add new comment:</label>
+
+    <form (ngSubmit)="onSubmit()">
+        <textarea id="comment" name="comment" [(ngModel)]="comment" placeholder="Leave a comment..."
+            required></textarea>
+
+        <button type="submit" class="button">Add Comment</button>
+    </form>
+</article>

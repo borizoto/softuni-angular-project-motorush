@@ -7,11 +7,13 @@ import { AsyncPipe } from '@angular/common';
 import { AuthService } from '../../../core/services/auth.service';
 import { User } from '../../../models/user.model';
 import { WatchlistService } from '../../../core/services/watchlist.service';
+import { CommentSection } from "../../comments/comment-section/comment-section";
+import { CommentCreate } from "../../comments/comment-create/comment-create";
 
 @Component({
 	selector: 'app-listing-details',
 	standalone: true,
-	imports: [RouterLink, AsyncPipe],
+	imports: [RouterLink, AsyncPipe, CommentSection, CommentCreate],
 	templateUrl: './listing-details.html',
 	styleUrl: './listing-details.css'
 })
