@@ -23,7 +23,7 @@ export class Create implements OnInit {
 
 	modelOptions: Record<string, string[]> = {
 		Honda: ['Cbr', 'Hornet', 'Rebel'],
-		Yamaha: ['XSR', 'R1', 'FZ6'],
+		Yamaha: ['XSR', 'R1', 'FZ6', 'MT-07'],
 		Suzuki: ['GSXR', 'GSXF'],
 		Kawasaki: ['Ninja', 'Vulcan'],
 		BMW: ['R12', 'S1000RR'],
