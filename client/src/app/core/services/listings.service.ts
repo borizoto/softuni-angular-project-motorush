@@ -75,8 +75,13 @@ export class ListingService {
     }
 
     getByOwner(userId: string): Observable<WatchlistEntry[]> {
-        const params = new HttpParams().set('where', `_ownerId="${userId}"`);
-        return this.httpClient.get<WatchlistEntry[]>(`${this.baseUrl}/listings`, { params });
+        const searchParams = new URLSearchParams({
+            where: `_ownerId="${userId}"`
+        })
+
+        return this.httpClient.get<WatchlistEntry[]>(
+            `${this.baseUrl}/listings?${searchParams.toString()}`
+        );
     }
 
     getLatestListings(): Observable<Motorbike[]> {
