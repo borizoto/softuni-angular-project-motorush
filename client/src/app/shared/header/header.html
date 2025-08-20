@@ -4,6 +4,9 @@
     </h1>
 
     <nav>
+        <a routerLink="/">Home</a>
+        <a routerLink="/search">Search</a>
+        <a routerLink="/listings">All Listings</a>
         @if (isLoggedIn()) {
         <!-- Visible for logged-in users -->
         <div id="user">
@@ -18,9 +21,5 @@
             <a routerLink="/register">Register</a>
         </div>
         }
-
-        <a routerLink="/">Home</a>
-        <a routerLink="/search">Search</a>
-        <a routerLink="/listings">All Listings</a>
     </nav>
 </header>
