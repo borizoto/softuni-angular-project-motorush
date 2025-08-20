@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-search',
 	imports: [ReactiveFormsModule],
 	templateUrl: './search.html',
-	styleUrl: './search.css'
+	styleUrl: './search.css',
+	standalone: true
 })
 export class Search implements OnInit {
 	form!: FormGroup;
@@ -20,7 +22,7 @@ export class Search implements OnInit {
 		BMW: ['R12', 'S1000RR'],
 	};
 
-	constructor(private fb: FormBuilder) { }
+	constructor(private fb: FormBuilder, private router: Router) { }
 
 	ngOnInit(): void {
 		this.form = this.fb.group({
@@ -45,7 +47,7 @@ export class Search implements OnInit {
 	}
 
 	onSubmit(): void {
-		console.log('Search filters:', this.form.value);
-		// later call API to search bikes
+		const searchData = this.form.value;
+		this.router.navigate(['/search/results'], { state: searchData });
 	}
 }

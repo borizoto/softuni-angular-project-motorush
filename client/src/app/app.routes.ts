@@ -14,5 +14,6 @@ export const routes: Routes = [
     { path: 'listings/create', loadComponent: () => import('../app/features/listings/create/create').then(comp => comp.Create), canActivate: [authGuard] },
     { path: 'profile', loadComponent: () => import('../app/features/profle/profile/profile').then(comp => comp.Profile), canActivate: [authGuard] },
     { path: 'search', loadComponent: () => import('../app/features/listings/search/search').then(comp => comp.Search) },
+    { path: 'search/results', loadComponent: () => import('../app/features/listings/search-results/search-results').then(comp => comp.SearchResults) },
     { path: '**', component: NotFound }
 ];

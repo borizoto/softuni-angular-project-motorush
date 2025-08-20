@@ -1,0 +1,18 @@
+<section id="search-results">
+    <h1>Search Results</h1>
+
+    @if (filteredListings.length > 0) {
+    @for (bike of filteredListings; track bike._id) {
+    <div class="bike-item">
+        <img [src]="bike.imageUrl1" alt="{{ bike.make }} {{ bike.model }}" />
+        <p><strong>Brand:</strong> {{ bike.make }}</p>
+        <p><strong>Model:</strong> {{ bike.model }}</p>
+        <a [routerLink]="['/listings', bike._id, 'details']" class="details-btn">
+            Details
+        </a>
+    </div>
+    }
+    } @else {
+    <h3 class="no-articles">No bike listings match your search criteria.</h3>
+    }
+</section>

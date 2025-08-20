@@ -1364,9 +1364,9 @@
                 location: "Sofia",
                 currency: "BGN",
                 price: 7500,
-                imageUrl1: "assets/lasagna.jpg",
-                imageUrl2: "assets/lasagna.jpg",
-                imageUrl3: "assets/lasagna.jpg",
+                imageUrl1: "https://motorcycles.honda.bg/wp-content/uploads/sites/4/2024/11/124ym_cbr500r_studio_grand_prix_red_rfq.jpg",
+                imageUrl2: "https://motorcycles.honda.bg/wp-content/uploads/sites/4/2024/10/458320_24ym_honda_cbr500r-1024x683.jpg",
+                imageUrl3: "https://motorcycles.honda.bg/wp-content/uploads/sites/4/2024/10/458636_24ym_cbr650r.jpg",
                 information: "Cool bike",
                 _createdOn: 1613551279012
             },
@@ -1387,9 +1387,9 @@
                 location: "Sofia",
                 currency: "EUR",
                 price: 3500,
-                imageUrl1: "assets/lasagna.jpg",
-                imageUrl2: "assets/lasagna.jpg",
-                imageUrl3: "assets/lasagna.jpg",
+                imageUrl1: "https://motociclismo.pt/wp-content/uploads/2024-Yamaha-XS700-EU-Historic_White-Static-008-03.jpg",
+                imageUrl2: "https://cdn2.yamaha-motor.eu/prod/product-assets/2024/XS700/2024-Yamaha-XS700-EU-Detail-001-03_Mobile.jpg",
+                imageUrl3: "https://www.sportmarine.com/public/uploads/all/hxykMgaihcaaje5i5bB1rnanPegcNRkNT3nJWXso.jpg",
                 information: "Cool bike bro",
                 _createdOn: 1613551279013
             }
