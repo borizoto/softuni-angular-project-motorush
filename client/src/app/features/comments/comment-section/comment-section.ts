@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommentModel } from '../../../models/comment.model';
 
 @Component({
   selector: 'app-comment-section',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './comment-section.css'
 })
 export class CommentSection {
-
+  @Input() comments: CommentModel[] = [];
 }

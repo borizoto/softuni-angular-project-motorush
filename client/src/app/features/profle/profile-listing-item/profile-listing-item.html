@@ -2,6 +2,7 @@
     <img [src]="bike.imageUrl1" alt="{{bike.make}} {{bike.model}}" />
     <p><strong>Brand:</strong> {{ bike.make }}</p>
     <p><strong>Model:</strong> {{ bike.model }}</p>
+    <p><strong>Model:</strong> {{ bike._id}}</p>
     <a [routerLink]="['/listings', bike.listingId, 'details']" class="details-btn">
         Details
     </a>

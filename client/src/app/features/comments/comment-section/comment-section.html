@@ -1,4 +1,15 @@
 <div class="details-comments">
     <h2>Comments:</h2>
+
+    @if (comments.length > 0) {
+    <ul>
+        @for (comment of comments; track comment._id) {
+        <li class="comment">
+            <p><strong>{{ comment.username }}</strong>: {{ comment.comment }}</p>
+        </li>
+        }
+    </ul>
+    } @else {
     <p class="no-comment">No comments yet.</p>
+    }
 </div>

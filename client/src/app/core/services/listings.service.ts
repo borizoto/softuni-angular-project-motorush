@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
+import { map, Observable, throwError } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Motorbike } from "../../models";
 import { environment } from "../../../environments/environment";
@@ -77,11 +77,18 @@ export class ListingService {
     getByOwner(userId: string): Observable<WatchlistEntry[]> {
         const searchParams = new URLSearchParams({
             where: `_ownerId="${userId}"`
-        })
+        });
 
-        return this.httpClient.get<WatchlistEntry[]>(
-            `${this.baseUrl}/listings?${searchParams.toString()}`
-        );
+        return this.httpClient
+            .get<WatchlistEntry[]>(`${this.baseUrl}/listings?${searchParams.toString()}`)
+            .pipe(
+                map(entries =>
+                    entries.map(entry => ({
+                        ...entry,
+                        listingId: entry._id as string
+                    }))
+                )
+            );
     }
 
     getLatestListings(): Observable<Motorbike[]> {

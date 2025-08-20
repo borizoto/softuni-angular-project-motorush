@@ -9,6 +9,8 @@ import { User } from '../../../models/user.model';
 import { WatchlistService } from '../../../core/services/watchlist.service';
 import { CommentSection } from "../../comments/comment-section/comment-section";
 import { CommentCreate } from "../../comments/comment-create/comment-create";
+import { CommentsService } from '../../../core/services/comments.service';
+import { CommentModel } from '../../../models/comment.model';
 
 @Component({
 	selector: 'app-listing-details',
@@ -27,9 +29,12 @@ export class ListingDetails implements OnInit {
 	hasAddedToWatchlist = signal(false);
 	watchlistedCount = signal(0);
 
+	comments = signal<CommentModel[]>([]);
+
 	constructor(
 		private listingsService: ListingService,
 		private watchlistService: WatchlistService,
+		private commentsService: CommentsService,
 		private route: ActivatedRoute,
 		private authService: AuthService,
 		private router: Router
@@ -57,6 +62,9 @@ export class ListingDetails implements OnInit {
 			.subscribe(entries => {
 				this.watchlistedCount.set(entries.length);
 			});
+
+		this.commentsService.getAll(this.listingId)
+			.subscribe(allComments => this.comments.set(allComments));
 	}
 
 	onDelete(): void {
@@ -80,5 +88,9 @@ export class ListingDetails implements OnInit {
 				},
 				error: err => console.error('Adding to watchlist failed', err)
 			});
+	}
+
+	onCommentCreated(newComment: CommentModel) {
+		this.comments.update(comments => [...comments, newComment]);
 	}
 }

@@ -13,8 +13,11 @@ export class CommentsService {
 
     constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
-    getAll(): Observable<CommentModel[]> {
-        return this.httpClient.get<CommentModel[]>(`${this.baseUrl}/comments`);
+    getAll(listingId: string): Observable<CommentModel[]> {
+        const searchParams = new URLSearchParams({
+            where: `listingId="${listingId}"`
+        })
+        return this.httpClient.get<CommentModel[]>(`${this.baseUrl}/comments?${searchParams.toString()}`);
     }
 
     create(comment: string, listingId: string, username: string): Observable<CommentModel> {

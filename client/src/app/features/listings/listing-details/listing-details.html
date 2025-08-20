@@ -26,7 +26,7 @@
         </div>
 
         <!-- Comments Section -->
-        <app-comment-section></app-comment-section>
+        <app-comment-section [comments]="comments()"></app-comment-section>
 
         <!-- Edit/Delete buttons -->
         @if (isOwner) {
@@ -37,13 +37,13 @@
         </div>
         }
         <span class="watching">
-            In {{watchlistedCount()}} people's watchlists.
+            In {{ watchlistedCount() }} people's watchlists.
         </span>
     </div>
 
     @if (!isOwner && currentUser?._id) {
     <!-- Add Comment -->
-    <app-comment-create></app-comment-create>
+    <app-comment-create (commentCreated)="onCommentCreated($event)"></app-comment-create>
 
     <article class="watchlist">
         @if (!hasAddedToWatchlist()) {
@@ -61,6 +61,5 @@
         }
     </article>
     }
-
     }
 </section>
