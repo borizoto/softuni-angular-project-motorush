@@ -89,8 +89,7 @@ After logging in, you can:
 
 ### 🔎 Search & Filter
 
-- Use the search bar to find specific motorbikes  
-- Filter by brand, category, location, and more  
+- Search/Filter by brand, category, location, and more  
 
 ---
 

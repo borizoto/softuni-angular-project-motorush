@@ -22,11 +22,11 @@ export class Register {
     });
   }
 
-  passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { passwordMismatch: true };
-  }
+  // passwordMatchValidator(form: FormGroup) {
+  //   const password = form.get('password')?.value;
+  //   const confirmPassword = form.get('confirmPassword')?.value;
+  //   return password === confirmPassword ? null : { passwordMismatch: true };
+  // }
 
   onSubmit(): void {
     if (this.form.valid && this.passwordsMatch()) {
